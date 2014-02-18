@@ -1,0 +1,27 @@
+{
+  "name": "coral",
+  "version": "0.1.0",
+  "description": "your own google analytics",
+  "main": "server.js",
+  "dependencies": {
+    "express": "~3.4.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nherment/coral.git"
+  },
+  "keywords": [
+    "analytics",
+    "dashboard"
+  ],
+  "author": "Nicolas Herment <nherment@gmail.com>",
+  "license": "MIT License",
+  "bugs": {
+    "url": "https://github.com/nherment/coral/issues"
+  }
+}
