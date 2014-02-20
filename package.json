@@ -1,27 +1,27 @@
 {
-  "name": "coral",
+  "name": "node-boilerplate",
   "version": "0.1.0",
-  "description": "your own google analytics",
-  "main": "server.js",
-  "dependencies": {
-    "express": "~3.4.8"
-  },
-  "devDependencies": {},
+  "description": "node.js + angular + primus (websockets) boilerplate",
+  "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/nherment/coral.git"
+    "test": "mocha"
   },
   "keywords": [
-    "analytics",
-    "dashboard"
+    "boilerplate",
+    "angular",
+    "angularjs",
+    "primus",
+    "websocket"
   ],
   "author": "Nicolas Herment <nherment@gmail.com>",
   "license": "MIT License",
-  "bugs": {
-    "url": "https://github.com/nherment/coral/issues"
+  "dependencies": {
+    "primus": "~1.5.2",
+    "express": "~3.4.8",
+    "ws": "~0.4.31",
+    "winston": "~0.7.2",
+    "underscore": "~1.5.2",
+    "express-namespace": "~0.1.1",
+    "mongodb": "~1.3.23"
   }
 }

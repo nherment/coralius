@@ -1,0 +1,96 @@
+/* app css stylesheet */
+
+body {
+  background: url('../img/navy_blue.png') repeat;
+  font-family: "exo_2.0regular", sans-serif;
+  color: #40D9EB;
+  padding-bottom: 20px;
+}
+
+h1 {
+  font-size: 4em;
+}
+
+h2 {
+  padding: 0em 0em 0.1em 0em;
+}
+
+.row {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.metric h2 {
+  border-bottom: 1px solid;
+}
+
+.metric {
+  background: url('../img/black_paper.png') repeat;
+  border-radius: 1em;
+  padding: 1em;
+}
+
+.site-title {
+  padding: 0px;
+  margin: 0px;
+}
+
+
+.main-widget {
+  float: right;
+}
+
+.metric-title {
+  font-size: 2.5em;
+  display: inline;
+}
+.metric-value {
+  color: #ffff4f;
+  padding: 0px;
+  margin: 0px;
+  font-size: 3.3em;
+  display: inline;
+}
+
+.uri-list {
+  margin: 0em;
+  padding: 1em;
+  list-style: none;
+
+  background: url('../img/black_paper.png') repeat;
+}
+
+
+.uri-list li {
+  margin: 0.2em;
+  padding: 0.2em;
+  border-bottom: 1px dotted #ffff4f;
+}
+
+.uri-list li:hover {
+  font-family: 'exo_2.0bold', 'exo_2.0regular';
+  border-bottom: 1px solid #ffff4f;
+}
+
+.uri-list .header {
+  font-size: 1.2em;
+  display: inline;
+}
+
+.uri-list .value {
+  color: #ffff4f;
+  float: right;
+  font-size: 1.5em;
+  display: inline;
+}
+
+svg {
+  min-height: 500px;
+}
+
+.nv-legend-text,
+.nv-axislabel,
+.nv-axisMaxMin,
+.nv-axis text {
+  fill: #40D9EB;
+}

@@ -1,0 +1,51 @@
+
+{{hourlyVisitList}}
+<div class="container">
+
+    <div class="row">
+        <h1 class="site-title">coral</h1>
+        <div class="main-widget">
+            <h2 class="metric-title">
+                Today's page views:
+            </h2>
+            <p class="metric-value">{{dailyVisits}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="metric">
+                <h2>Page hits (today)</h2>
+                <ul class="uri-list">
+                    <li ng-repeat="visit in dailyVisitList | orderBy:'visits':true" >
+                        <div class="header">{{visit.id}}</div>
+                        <div class="value">{{visit.visits}}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="metric">
+                <h2>Visitors (today)</h2>
+                <ul class="uri-list">
+                    <li ng-repeat="visitor in dailyVisitorList | orderBy:'visits':true" >
+                        <div class="header">{{visitor.ip}}</div>
+                        <div class="value">{{visitor.visits}}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="chart" class="metric">
+                <h2>Page hits (this month)</h2>
+                <svg></svg>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- /container -->
+
+<script type="application/javascript">
+</script>
