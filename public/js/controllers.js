@@ -2,9 +2,9 @@
 
 /* Controllers */
 
-var phonecatControllers = angular.module('phonecatControllers', []);
+var coraliusControllers = angular.module('coraliusControllers', []);
 
-phonecatControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
+coraliusControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
 
   function($scope, backend, $log) {
 
@@ -110,18 +110,14 @@ phonecatControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
 
         var graph = new Rickshaw.Graph({
           element: document.querySelector("#chart"),
-          height: 250,
           stroke: true,
           strokeWidth: 2,
           xScale: d3.time.scale(),
           series: graphData
         })
 
-        var time = new Rickshaw.Fixtures.Time();
-        var milliseconds = time.unit('millisecond');
         var x_axis = new Rickshaw.Graph.Axis.Time({
-          graph: graph,
-          timeUnit: milliseconds
+          graph: graph
         })
 
         var y_axis = new Rickshaw.Graph.Axis.Y({
@@ -138,10 +134,9 @@ phonecatControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
 
         var hoverDetail = new Rickshaw.Graph.HoverDetail( {
           graph: graph,
-          xFormatter: function(x) { return new Date(x).toDateString() },
+          xFormatter: function(x) { return new Date(x * 1000).toDateString() },
           yFormatter: function(y) { return y + ' hits' }
         })
-
 
         graph.render()
 
@@ -149,12 +144,12 @@ phonecatControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
     })
   }])
 
-phonecatControllers.controller('SignInCtrl', ['$scope', 'backend',
+coraliusControllers.controller('SignInCtrl', ['$scope', 'backend',
   function($scope, backend) {
 //    backend.send('hello')
   }]);
 
-phonecatControllers.controller('SignUpCtrl', ['$scope', 'backend',
+coraliusControllers.controller('SignUpCtrl', ['$scope', 'backend',
   function($scope, backend) {
 //    backend.send('hello')
   }])

@@ -2,10 +2,10 @@
 
 /* Services */
 
-var phonecatServices = angular.module('phonecatServices', ['ngResource']);
+var coraliusServices = angular.module('coraliusServices', ['ngResource']);
 
 
-phonecatServices.factory('uuid', [function($q, $rootScope) {
+coraliusServices.factory('uuid', [function($q, $rootScope) {
     return {
       v4: function() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -17,7 +17,7 @@ phonecatServices.factory('uuid', [function($q, $rootScope) {
   }]
 )
 
-phonecatServices.factory('backend', ['$log', '$q', '$rootScope', 'uuid', function($log, $q, $rootScope, uuid) {
+coraliusServices.factory('backend', ['$log', '$q', '$rootScope', 'uuid', function($log, $q, $rootScope, uuid) {
   // We return this object to anything injecting our service
   var Service = {}
 

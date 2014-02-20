@@ -2,14 +2,14 @@
 
 /* App Module */
 
-var phonecatApp = angular.module('phonecatApp', [
+var coraliusApp = angular.module('coraliusApp', [
   'ngRoute',
-  'phonecatControllers',
-  'phonecatFilters',
-  'phonecatServices'
+  'coraliusControllers',
+  'coraliusFilters',
+  'coraliusServices'
 ]);
 
-phonecatApp.config(['$routeProvider',
+coraliusApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/signin', {
