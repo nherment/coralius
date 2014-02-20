@@ -23,11 +23,11 @@ phonecatControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
 
             dailyVisits += dailyVisitList[i].visits
           }
-          $log.info('dailyVisitList', dailyVisitList)
+//          $log.info('dailyVisitList', dailyVisitList)
           $scope.$apply(function() {
             $scope.dailyVisitList = dailyVisitList || []
             $scope.dailyVisits = dailyVisits
-            $log.info('dailyVisits', dailyVisitList, dailyVisits)
+//            $log.info('dailyVisits', dailyVisitList, dailyVisits)
           })
         } else {
           $log.info('no daily resource data')
@@ -44,7 +44,7 @@ phonecatControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
           for(var i = 0 ; i < trackInfo.length ; i++) {
             dailyVisits += trackInfo[i].visits
           }
-          $log.info(trackInfo)
+//          $log.info(trackInfo)
           $scope.$apply(function() {
             $scope.dailyVisitorList = trackInfo
             $scope.dailyVisitors = dailyVisits
@@ -56,6 +56,8 @@ phonecatControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
     })
 
 
+
+    var palette = new Rickshaw.Color.Palette();
 
     backend.send('track', {action: 'get:history', type: 'resource'}, function(err, trackInfo) {
       var dailyVisits = 0;
@@ -72,71 +74,80 @@ phonecatControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
 
           if(!data[trackInfo[i].id]) {
             data[trackInfo[i].id] = {
-              key: trackInfo[i].id,
-              values: []
+              name: trackInfo[i].id,
+              data: [],
+              color: palette.color()
             }
             graphData.push(data[trackInfo[i].id])
           }
-          data[trackInfo[i].id].values.push([trackInfo[i].date.getTime(), trackInfo[i].visits])
+          data[trackInfo[i].id].data.push({x: trackInfo[i].date.getTime(), y: trackInfo[i].visits})
 
+          data[trackInfo[i].id].data.sort(function(a, b) {
+            var sort = a.x - b.x
+            return sort
+          })
           dailyVisits += trackInfo[i].visits
         }
-
-        dates.sort();
 
         for(var i = 0 ; i < dates.length ; i++) {
           for(var j = 0 ; j < graphData.length ; j++) {
             var hasDate = false;
-            for(var k = 0 ; k < graphData[j].values.length ; k++) {
-              if(graphData[j].values[k][0] === dates[i]) {
+            for(var k = 0 ; k < graphData[j].data.length ; k++) {
+              if(graphData[j].data[k].x === dates[i]) {
                 hasDate = true;
                 break;
               }
             }
             if(!hasDate) {
-              graphData[j].values.push([dates[i], 0])
+              graphData[j].data.push({x: dates[i], y:0})
+              graphData[j].data.sort(function(a, b) {
+                var sort = a.x - b.x
+                return sort
+              })
             }
           }
         }
 
-        // TODO: use rickshaw http://code.shutterstock.com/rickshaw/
-        nv.addGraph(function() {
-          var chart = nv.models.stackedAreaChart()
-            .margin({right: 100})
-            .x(function(d) { return d[0] })   //We can modify the data accessor functions...
-            .y(function(d) { return d[1] })   //...in case your data is formatted differently.
-            .useInteractiveGuideline(true)    //Tooltips which show all data points. Very nice!
-            .rightAlignYAxis(true)      //Let's move the y-axis to the right side.
-            .transitionDuration(500)
-            .showControls(true)       //Allow user to choose 'Stacked', 'Stream', 'Expanded' mode.
-            .clipEdge(true);
+        var graph = new Rickshaw.Graph({
+          element: document.querySelector("#chart"),
+          height: 250,
+          stroke: true,
+          strokeWidth: 0.5,
+          xScale: d3.time.scale(),
+          series: graphData
+        })
 
-          //Format x-axis labels with custom function.
-          chart.xAxis
-            .tickFormat(function(d) {
-              return d3.time.format('%A %e')(new Date(d))
-            })
+        var time = new Rickshaw.Fixtures.Time();
+        var milliseconds = time.unit('millisecond');
+        var x_axis = new Rickshaw.Graph.Axis.Time({
+          graph: graph,
+          timeUnit: milliseconds
+        })
 
-          chart.yAxis
-            .tickFormat(d3.format(',.2f'));
+        var y_axis = new Rickshaw.Graph.Axis.Y({
+          graph: graph,
+          orientation: 'left',
+          tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
+          element: document.getElementById('y_axis')
+        })
 
-          chart
-            .style('fill','white')
-            .style('stroke','white')
+        var legend = new Rickshaw.Graph.Legend({
+          element: document.querySelector('#legend'),
+          graph: graph
+        })
+
+        var hoverDetail = new Rickshaw.Graph.HoverDetail( {
+          graph: graph,
+          xFormatter: function(x) { return new Date(x).toDateString() },
+          yFormatter: function(y) { return y + ' hits' }
+        })
 
 
-          d3.select('#chart svg')
-            .datum(graphData)
-            .call(chart);
-
-          nv.utils.windowResize(chart.update);
-
-          return chart;
-        });
+        graph.render()
 
       }
     })
-  }]);
+  }])
 
 phonecatControllers.controller('SignInCtrl', ['$scope', 'backend',
   function($scope, backend) {
@@ -146,4 +157,4 @@ phonecatControllers.controller('SignInCtrl', ['$scope', 'backend',
 phonecatControllers.controller('SignUpCtrl', ['$scope', 'backend',
   function($scope, backend) {
 //    backend.send('hello')
-  }]);
+  }])

@@ -60,7 +60,7 @@ phonecatServices.factory('backend', ['$log', '$q', '$rootScope', 'uuid', functio
   })
 
   primus.on('error', function error(err) {
-    $log.error('An unknown error has occured', err)
+    $log.error('An unknown error has occured', err.message, err)
   })
 
   primus.on('data', function incoming(wrapper) {
@@ -87,7 +87,7 @@ phonecatServices.factory('backend', ['$log', '$q', '$rootScope', 'uuid', functio
   })
 
   primus.on('close', function end() {
-    $log.warn('We\'ve lost the connection to the server.')
+    $log.warn('We have lost the connection to the server.')
     connected = false
   })
 

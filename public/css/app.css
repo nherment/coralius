@@ -2,9 +2,13 @@
 
 body {
   background: url('../img/navy_blue.png') repeat;
-  font-family: "exo_2.0regular", sans-serif;
+  font-family: "quanticoregular", sans-serif;
   color: #40D9EB;
   padding-bottom: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "quanticoregular", sans-serif;
 }
 
 h1 {
@@ -30,9 +34,10 @@ h2 {
   padding: 1em;
 }
 
-.site-title {
+.site-title h1, .site-title h4, .site-title div {
   padding: 0px;
   margin: 0px;
+  display: inline;
 }
 
 
@@ -68,7 +73,7 @@ h2 {
 }
 
 .uri-list li:hover {
-  font-family: 'exo_2.0bold', 'exo_2.0regular';
+  font-family: 'quanticobold', 'quanticoregular';
   border-bottom: 1px solid #ffff4f;
 }
 
@@ -84,13 +89,36 @@ h2 {
   display: inline;
 }
 
-svg {
-  min-height: 500px;
-}
+/*svg {*/
+  /*min-height: 500px;*/
+/*}*/
 
 .nv-legend-text,
 .nv-axislabel,
 .nv-axisMaxMin,
 .nv-axis text {
   fill: #40D9EB;
+}
+
+
+#chart_container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+#chart {
+  display: inline-block;
+  margin-left: 0px;
+  width: 100%;
+}
+#y_axis {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+}
+#legend {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 0 0 10px;
 }
