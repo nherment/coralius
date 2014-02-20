@@ -8,9 +8,6 @@ phonecatControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
 
   function($scope, backend, $log) {
 
-    setTimeout(function() {
-
-
     $scope.hourlyVisits = 0;
     $scope.dailyVisits = 0;
     $scope.dailyVisitors = 0;
@@ -102,6 +99,7 @@ phonecatControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
           }
         }
 
+        // TODO: use rickshaw http://code.shutterstock.com/rickshaw/
         nv.addGraph(function() {
           var chart = nv.models.stackedAreaChart()
             .margin({right: 100})
@@ -138,7 +136,6 @@ phonecatControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
 
       }
     })
-    }, 5000)
   }]);
 
 phonecatControllers.controller('SignInCtrl', ['$scope', 'backend',
