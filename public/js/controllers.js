@@ -131,6 +131,14 @@ coraliusControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
           element: document.querySelector('#legend'),
           graph: graph
         })
+        var shelving = new Rickshaw.Graph.Behavior.Series.Toggle({
+          graph: graph,
+          legend: legend
+        });
+        var highlighter = new Rickshaw.Graph.Behavior.Series.Highlight({
+          graph: graph,
+          legend: legend
+        });
 
         var hoverDetail = new Rickshaw.Graph.HoverDetail( {
           graph: graph,

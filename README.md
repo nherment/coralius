@@ -21,4 +21,4 @@ Change the username and password accordingly
 
 # Features
 
-respects browsers' "Do Not track" header.
+TODO: respects browsers' "Do Not track" header.
