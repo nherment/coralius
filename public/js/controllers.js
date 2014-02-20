@@ -68,8 +68,8 @@ phonecatControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
         for(var i = 0 ; i < trackInfo.length ; i++) {
 
           trackInfo[i].date = new Date(trackInfo[i].date)
-          if(dates.indexOf(trackInfo[i].date.getTime()) === -1) {
-            dates.push(trackInfo[i].date.getTime())
+          if(dates.indexOf(trackInfo[i].date.getTime()/1000) === -1) {
+            dates.push(trackInfo[i].date.getTime()/1000)
           }
 
           if(!data[trackInfo[i].id]) {
@@ -80,7 +80,7 @@ phonecatControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
             }
             graphData.push(data[trackInfo[i].id])
           }
-          data[trackInfo[i].id].data.push({x: trackInfo[i].date.getTime(), y: trackInfo[i].visits})
+          data[trackInfo[i].id].data.push({x: trackInfo[i].date.getTime()/1000, y: trackInfo[i].visits})
 
           data[trackInfo[i].id].data.sort(function(a, b) {
             var sort = a.x - b.x
@@ -112,7 +112,7 @@ phonecatControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
           element: document.querySelector("#chart"),
           height: 250,
           stroke: true,
-          strokeWidth: 0.5,
+          strokeWidth: 2,
           xScale: d3.time.scale(),
           series: graphData
         })
