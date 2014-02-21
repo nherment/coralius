@@ -31,7 +31,7 @@
                 <h2>Visitors (today)</h2>
                 <ul class="uri-list">
                     <li ng-repeat="visitor in dailyVisitorList | orderBy:'visits':true" >
-                        <div class="header">{{visitor.ip}}</div>
+                        <div class="header">{{visitor.ip}} <span ng-if="visitor.location">- <span ng-if="visitor.location.city">{{visitor.location.city}}, </span>{{visitor.location.country}}</span></div>
                         <div class="value">{{visitor.visits}}</div>
                     </li>
                 </ul>
