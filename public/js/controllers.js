@@ -8,6 +8,7 @@ coraliusControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
 
   function($scope, backend, $log) {
 
+
     $scope.hourlyVisits = 0;
     $scope.dailyVisits = 0;
     $scope.dailyVisitors = 0;
@@ -28,6 +29,9 @@ coraliusControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
             $scope.dailyVisitList = dailyVisitList || []
             $scope.dailyVisits = dailyVisits
 //            $log.info('dailyVisits', dailyVisitList, dailyVisits)
+
+            $scope.dailyVisitsCurrentPage = 0
+            $scope.dailyVisitsPageSize = 5
           })
         } else {
           $log.info('no daily resource data')
@@ -48,6 +52,9 @@ coraliusControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
           $scope.$apply(function() {
             $scope.dailyVisitorList = trackInfo
             $scope.dailyVisitors = dailyVisits
+
+            $scope.dailyVisitorsCurrentPage = 0
+            $scope.dailyVisitorsPageSize = 5
           })
         } else {
           $log.info('no daily ip data')

@@ -13,6 +13,38 @@ body {
   color: #40D9EB;
 }
 
+a,
+.btn-link {
+  text-decoration: none;
+  color: #DF5D00;
+}
+
+.btn-link[disabled],
+.btn-link[disabled]:hover,
+.btn-link[disabled]:visited {
+  color: #666;
+}
+
+a:visited,
+.btn-link:visited,
+.btn-link:focus {
+  text-decoration: none;
+}
+
+.btn-link:hover,
+a:hover {
+  text-decoration: underline;
+}
+
+a:hover,
+a:visited,
+.btn-link:hover,
+.btn-link:visited,
+.btn-link:focus {
+  outline: none;
+  color: #F38630;
+}
+
 footer {
   position: absolute;
   bottom: 0;
@@ -70,6 +102,10 @@ h2 {
   margin: 0px;
   font-size: 3.3em;
   display: inline;
+}
+
+h2 .metric-value {
+  font-size:1em;
 }
 
 .uri-list {

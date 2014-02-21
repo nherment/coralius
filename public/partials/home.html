@@ -6,20 +6,25 @@
         <div class="col-lg-12 site-title">
             <h1>coralius</h1>
             <h4>[website analytics]</h4>
-            <div class="main-widget">
-                <h2 class="metric-title">
-                    Today's page views:
-                </h2>
-                <p class="metric-value">{{dailyVisits}}</p>
-            </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-6">
             <div class="metric">
-                <h2>Page hits (today)</h2>
+                <h2>
+                    Page hits (today)
+                    <span class="pull-right metric-value">{{dailyVisits}}</span>
+                </h2>
+
+                <button class="btn-link" ng-disabled="dailyVisitsCurrentPage == 0" ng-click="dailyVisitsCurrentPage=dailyVisitsCurrentPage-1">
+                    Previous
+                </button>
+                <button class="btn-link pull-right" ng-disabled="dailyVisitsCurrentPage >= dailyVisitList.length/dailyVisitsPageSize - 1" ng-click="dailyVisitsCurrentPage=dailyVisitsCurrentPage+1">
+                    Next
+                </button>
+
                 <ul class="uri-list">
-                    <li ng-repeat="visit in dailyVisitList | orderBy:'visits':true" >
+                    <li ng-repeat="visit in dailyVisitList | orderBy:'visits':true | startFrom:dailyVisitsCurrentPage*dailyVisitsPageSize | limitTo:dailyVisitsPageSize" >
                         <div class="header">{{visit.id}}</div>
                         <div class="value">{{visit.visits}}</div>
                     </li>
@@ -28,9 +33,21 @@
         </div>
         <div class="col-lg-6">
             <div class="metric">
-                <h2>Visitors (today)</h2>
+                <h2>
+                    Visitors (today)
+                    <span class="pull-right metric-value">{{dailyVisitorList.length}}</span>
+                </h2>
+
+                <button class="btn-link" ng-disabled="dailyVisitorsCurrentPage == 0" ng-click="dailyVisitorsCurrentPage=dailyVisitorsCurrentPage-1">
+                    Previous
+                </button>
+                <button class="btn-link pull-right" ng-disabled="dailyVisitorsCurrentPage >= dailyVisitorList.length/dailyVisitorsPageSize - 1" ng-click="dailyVisitorsCurrentPage=dailyVisitorsCurrentPage+1">
+                    Next
+                </button>
+
+
                 <ul class="uri-list">
-                    <li ng-repeat="visitor in dailyVisitorList | orderBy:'visits':true" >
+                    <li ng-repeat="visitor in dailyVisitorList | orderBy:'visits':true | startFrom:dailyVisitorsCurrentPage*dailyVisitorsPageSize | limitTo:dailyVisitorsPageSize" >
                         <div class="header">{{visitor.ip}} <span ng-if="visitor.location">- <span ng-if="visitor.location.city">{{visitor.location.city}}, </span>{{visitor.location.country}}</span></div>
                         <div class="value">{{visitor.visits}}</div>
                     </li>

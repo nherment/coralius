@@ -2,8 +2,9 @@
 
 /* Filters */
 
-angular.module('coraliusFilters', []).filter('checkmark', function() {
-  return function(input) {
-    return input ? '\u2713' : '\u2718';
-  };
+angular.module('coraliusFilters', []).filter('startFrom', function() {
+  return function(input, start) {
+    start = +start; //parse to int
+    return input ? input.slice(start) : 0;
+  }
 });
