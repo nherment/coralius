@@ -140,13 +140,10 @@ h2 .metric-value {
   display: inline;
 }
 
-/*svg {*/
-  /*min-height: 500px;*/
-/*}*/
-
 text {
   fill: #ffff4f;
 }
+
 .legend {
   display: block;
   vertical-align: top;
@@ -171,13 +168,9 @@ text {
 .tick,
 .rickshaw_graph .tick,
 .rickshaw_graph .x_tick,
-.rickshaw_graph .y_tick{
+.rickshaw_graph .y_tick {
   border-color: #ffff4f;
-  color: #ffff4f;
-  fill: #ffff4f;
-  stroke: #ffff4f;
 }
-
 
 #chart_container {
   position: relative;
