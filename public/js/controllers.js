@@ -125,14 +125,15 @@ coraliusControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
 
         var x_axis = new Rickshaw.Graph.Axis.Time({
           graph: graph
+//          tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
         })
 
-        var y_axis = new Rickshaw.Graph.Axis.Y({
-          graph: graph,
-          orientation: 'left',
-          tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
-          element: document.getElementById('y_axis')
-        })
+//        var y_axis = new Rickshaw.Graph.Axis.Y({
+//          graph: graph,
+//          orientation: 'left',
+//          tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
+//          element: document.getElementById('y_axis')
+//        })
 
         var legend = new Rickshaw.Graph.Legend({
           element: document.querySelector('#legend'),
