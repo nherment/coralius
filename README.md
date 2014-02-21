@@ -1,3 +1,9 @@
+# coralius
+
+Your own website analytics
+
+![coralius screenshot](/docs/screenshot.png)
+
 
 # installation
 
@@ -21,4 +27,12 @@ Change the username and password accordingly
 
 # Features
 
-TODO: respects browsers' "Do Not track" header.
+## right now
+
+- daily visitors
+- monthly visitors
+
+## in the pipeline
+
+- page performance comparison
+- respects browsers' "Do Not track" header
