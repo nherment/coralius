@@ -85,7 +85,7 @@
 
                 <ul class="uri-list">
                     <li ng-repeat="perfReport in dailyPerformanceReports | orderBy:'duration95':true | startFrom:dailyPerformanceReportsCurrentPage*dailyPerformanceReportsPageSize | limitTo:dailyPerformanceReportsPageSize" >
-                        <div class="header">{{perfReport.uri}}</div>
+                        <div class="header">{{perfReport.id}}</div>
                         <div class="value">{{perfReport.duration95}}ms</div>
                     </li>
                 </ul>

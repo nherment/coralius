@@ -62,8 +62,6 @@ coraliusControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
       }
     })
 
-
-
     var palette = new Rickshaw.Color.Palette();
 
     backend.send('track', {action: 'get:history', type: 'resource'}, function(err, trackInfo) {

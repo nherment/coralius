@@ -60,6 +60,7 @@
         clearInterval(interval);
 
         var data = {
+          id: window.coralius.id,
           entries: window.performance.getEntries(),
           timing: window.performance.timing,
           navigation: window.performance.navigation
