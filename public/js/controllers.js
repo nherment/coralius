@@ -158,6 +158,25 @@ coraliusControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
 
       }
     })
+
+
+    backend.send('track', {action: 'get:performance', limit: 100}, function(err, dailyPerformanceReports) {
+      if(err) {
+        $log.error(err)
+      } else {
+        if(dailyPerformanceReports && dailyPerformanceReports.length > 0) {
+          $scope.$apply(function() {
+            $scope.dailyPerformanceReportsCurrentPage = 0
+            $scope.dailyPerformanceReportsPageSize = 10
+
+            $scope.dailyPerformanceReports = dailyPerformanceReports
+
+          })
+        } else {
+          $log.warn('no daily PerformanceReports data')
+        }
+      }
+    })
   }])
 
 coraliusControllers.controller('SignInCtrl', ['$scope', 'backend',

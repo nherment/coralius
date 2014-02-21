@@ -81,7 +81,7 @@ h2 {
   padding: 1em;
 }
 
-.site-title h1, .site-title h4, .site-title div {
+.site-title h1, .site-title h4, .site-title h5, .site-title div {
   padding: 0px;
   margin: 0px;
   display: inline;

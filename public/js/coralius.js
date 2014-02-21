@@ -1,7 +1,12 @@
 (function() {
 
-  if('undefined' === typeof performance) {
-    return;
+  window.coralius = {
+    reportUrl: function(url) {
+      if('undefined' === typeof setInterval && 'undefined' === typeof window.performance) {
+        return;
+      }
+      gatherAndSend(url)
+    }
   }
 
   var sendRequest = function(url, postData, callback) {
@@ -46,22 +51,23 @@
     return xmlhttp;
   }
 
-  var performanceEntriesIndex = 0;
+  function gatherAndSend(url) {
 
-  setTimeout(function() {
-    var entries = performance.getEntries()
-    if(entries && entries.length > performanceEntriesIndex) {
-      var diff = entries.slice(performanceEntriesIndex, entries.length);
-      var data = {
-        entries: diff
+    url = url || '/api/track/performance';
+    var interval = setInterval(function() {
+      if(window.performance && window.performance.timing && window.performance.timing.loadEventEnd) {
+
+        clearInterval(interval);
+
+        var data = {
+          entries: window.performance.getEntries(),
+          timing: window.performance.timing,
+          navigation: window.performance.navigation
+        };
+        sendRequest(url, data);
       }
-      if(performanceEntriesIndex === 0) {
-        data.timing = performance.timing
-        data.navigation = performance.navigation
-      }
-      performanceEntriesIndex = entries.length;
-      sendRequest('http://localhost:4001/api/track/performance', data)
-    }
-  }, 100)
+    }, 100);
+
+  }
 
 })();

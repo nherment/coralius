@@ -68,6 +68,30 @@
             </div>
         </div>
     </div>
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="metric">
+                <h2>
+                    Performance report (today)
+                </h2>
+
+                <button class="btn-link" ng-disabled="dailyPerformanceReportsCurrentPage == 0" ng-click="dailyPerformanceReportsCurrentPage=dailyPerformanceReportsCurrentPage-1">
+                    Previous
+                </button>
+                <button class="btn-link pull-right" ng-disabled="dailyPerformanceReportsCurrentPage >= dailyVisitList.length/dailyPerformanceReportsPageSize - 1" ng-click="dailyPerformanceReportsCurrentPage=dailyPerformanceReportsCurrentPage+1">
+                    Next
+                </button>
+
+                <ul class="uri-list">
+                    <li ng-repeat="perfReport in dailyPerformanceReports | orderBy:'duration95':true | startFrom:dailyPerformanceReportsCurrentPage*dailyPerformanceReportsPageSize | limitTo:dailyPerformanceReportsPageSize" >
+                        <div class="header">{{perfReport.uri}}</div>
+                        <div class="value">{{perfReport.duration95}}ms</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
 </div> <!-- /container -->
 

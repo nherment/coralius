@@ -1,54 +1,59 @@
 <!doctype html>
 <html lang="en" ng-app="coraliusApp">
-<head>
-  <meta charset="utf-8">
-  <title>coralius</title>
+    <head>
+      <meta charset="utf-8">
+      <title>coralius</title>
 
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+      <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-  <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
-  <link rel="stylesheet" href="css/vendor/bootstrap-theme.min.css">
-  <link rel="stylesheet" href="css/vendor/rickshaw.min.css">
-  <link rel="stylesheet" href="css/fonts/quantico_regular_macroman/stylesheet.css">
-  <link rel="stylesheet" href="css/fonts/quantico_bold_macroman/stylesheet.css">
-  <link rel="stylesheet" href="css/app.css">
+      <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
+      <link rel="stylesheet" href="css/vendor/bootstrap-theme.min.css">
+      <link rel="stylesheet" href="css/vendor/rickshaw.min.css">
+      <link rel="stylesheet" href="css/fonts/quantico_regular_macroman/stylesheet.css">
+      <link rel="stylesheet" href="css/fonts/quantico_bold_macroman/stylesheet.css">
+      <link rel="stylesheet" href="css/app.css">
+    </head>
 
-  <script src="/primus/primus.js"></script>
+    <body>
 
-  <script src="js/vendor/jquery/jquery-1.10.2.js"></script>
-  <script src="js/vendor/angular/angular.js"></script>
-  <script src="js/vendor/angular/angular-animate.js"></script>
-  <script src="js/vendor/angular/angular-resource.js"></script>
-  <script src="js/vendor/angular/angular-route.js"></script>
-  <script src="js/vendor/angular/angular-route.js"></script>
-
-  <script src="js/vendor/d3.min.js"></script>
-  <script src="js/vendor/rickshaw.min.js"></script>
-
-  <script src="js/app.js"></script>
-  <script src="js/controllers.js"></script>
-  <script src="js/filters.js"></script>
-  <script src="js/services.js"></script>
-  <!--<script src="js/coralius.js"></script>-->
-</head>
-<body>
-
-  <div class="view-container">
-    <div ng-view class="view-frame"></div>
-  </div>
-
-  <div id="footer">
-      <div class="container">
-          <p class="text-muted">
-              <span class="coralius">coralius</span> is <a href="https://github.com/nherment/coralius">open source</a>.
-
-              <span class="pull-right">
-                  The font used on this website from <a href="http://www.madtype.com">Matthew Desmond</a> is
-                  <a href="http://www.fontsquirrel.com/license/quantico">copyrighted</a>.
-              </span>
-          </p>
+      <div class="view-container">
+        <div ng-view class="view-frame"></div>
       </div>
-  </div>
-</body>
+
+      <div id="footer">
+          <div class="container">
+              <p class="text-muted">
+                  <span class="coralius">coralius</span> is <a href="https://github.com/nherment/coralius">open source</a>.
+
+                  <span class="pull-right">
+                      The font used on this website from <a href="http://www.madtype.com">Matthew Desmond</a> is
+                      <a href="http://www.fontsquirrel.com/license/quantico">copyrighted</a>.
+                  </span>
+              </p>
+          </div>
+      </div>
+    </body>
+
+    <script src="js/coralius.js"></script>
+    <script>
+        coralius.reportUrl();
+    </script>
+
+    <script src="/primus/primus.js"></script>
+
+    <script src="js/vendor/jquery/jquery-1.10.2.js"></script>
+    <script src="js/vendor/angular/angular.js"></script>
+    <script src="js/vendor/angular/angular-animate.js"></script>
+    <script src="js/vendor/angular/angular-resource.js"></script>
+    <script src="js/vendor/angular/angular-route.js"></script>
+    <script src="js/vendor/angular/angular-route.js"></script>
+
+    <script src="js/vendor/d3.min.js"></script>
+    <script src="js/vendor/rickshaw.min.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/services.js"></script>
 </html>

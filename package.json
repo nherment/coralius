@@ -1,7 +1,7 @@
 {
   "name": "coralius",
   "version": "0.1.0",
-  "description": "your own web analytics server",
+  "description": "no muss no fuss one page web analytics",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
