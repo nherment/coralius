@@ -15,51 +15,49 @@ coraliusControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
     backend.send('track', {action: 'get:daily', type: 'resource', limit: 10}, function(err, dailyVisitList) {
       if(err) {
         $log.error(err)
-      } else {
-        var dailyVisits = 0;
-        if(dailyVisitList && dailyVisitList.length > 0) {
-          for(var i = 0 ; i < dailyVisitList.length ; i++) {
-
-            dailyVisitList[i].date = new Date(dailyVisitList[i].date)
-
-            dailyVisits += dailyVisitList[i].visits
-          }
-//          $log.info('dailyVisitList', dailyVisitList)
-          $scope.$apply(function() {
-            $scope.dailyVisitList = dailyVisitList || []
-            $scope.dailyVisits = dailyVisits
-//            $log.info('dailyVisits', dailyVisitList, dailyVisits)
-
-            $scope.dailyVisitsCurrentPage = 0
-            $scope.dailyVisitsPageSize = 5
-          })
-        } else {
-          $log.info('no daily resource data')
-        }
       }
+      var dailyVisits = 0;
+      if(dailyVisitList && dailyVisitList.length > 0) {
+        for(var i = 0 ; i < dailyVisitList.length ; i++) {
+
+          dailyVisitList[i].date = new Date(dailyVisitList[i].date)
+
+          dailyVisits += dailyVisitList[i].visits
+        }
+      } else {
+        $log.info('no daily resource data')
+      }
+
+      $scope.$apply(function() {
+        $scope.dailyVisitList = dailyVisitList || []
+        $scope.dailyVisits = dailyVisits
+
+        $scope.dailyVisitsCurrentPage = 0
+        $scope.dailyVisitsPageSize = 5
+      })
     })
     backend.send('track', {action: 'get:daily', type: 'ip', limit: 10}, function(err, trackInfo) {
       if(err) {
         $log.error(err)
-      } else {
-        var dailyVisits = 0;
-        if(trackInfo && trackInfo.length > 0) {
-
-          for(var i = 0 ; i < trackInfo.length ; i++) {
-            dailyVisits += trackInfo[i].visits
-          }
-//          $log.info(trackInfo)
-          $scope.$apply(function() {
-            $scope.dailyVisitorList = trackInfo
-            $scope.dailyVisitors = dailyVisits
-
-            $scope.dailyVisitorsCurrentPage = 0
-            $scope.dailyVisitorsPageSize = 5
-          })
-        } else {
-          $log.info('no daily ip data')
-        }
       }
+
+      var dailyVisits = 0;
+      if(trackInfo && trackInfo.length > 0) {
+
+        for(var i = 0 ; i < trackInfo.length ; i++) {
+          dailyVisits += trackInfo[i].visits
+        }
+      } else {
+        $log.info('no daily ip data')
+      }
+//          $log.info(trackInfo)
+      $scope.$apply(function() {
+        $scope.dailyVisitorList = trackInfo
+        $scope.dailyVisitors = dailyVisits
+
+        $scope.dailyVisitorsCurrentPage = 0
+        $scope.dailyVisitorsPageSize = 5
+      })
     })
 
     var palette = new Rickshaw.Color.Palette();
@@ -158,22 +156,17 @@ coraliusControllers.controller('HomeCtrl', ['$scope', 'backend', '$log',
     })
 
 
-    backend.send('track', {action: 'get:performance', limit: 100}, function(err, dailyPerformanceReports) {
+    backend.send('track', {action: 'get:performance'}, function(err, dailyPerformanceReports) {
       if(err) {
         $log.error(err)
-      } else {
-        if(dailyPerformanceReports && dailyPerformanceReports.length > 0) {
-          $scope.$apply(function() {
-            $scope.dailyPerformanceReportsCurrentPage = 0
-            $scope.dailyPerformanceReportsPageSize = 10
-
-            $scope.dailyPerformanceReports = dailyPerformanceReports
-
-          })
-        } else {
-          $log.warn('no daily PerformanceReports data')
-        }
       }
+      $scope.$apply(function() {
+        $scope.dailyPerformanceReportsCurrentPage = 0
+        $scope.dailyPerformanceReportsPageSize = 200
+
+        $scope.dailyPerformanceReportList = dailyPerformanceReports || []
+
+      })
     })
   }])
 

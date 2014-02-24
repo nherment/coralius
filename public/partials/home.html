@@ -12,7 +12,7 @@
         <div class="col-lg-6">
             <div class="metric">
                 <h2>
-                    Page hits (today)
+                    Page hits < today)
                     <span class="pull-right metric-value">{{dailyVisits}}</span>
                 </h2>
 
@@ -84,7 +84,7 @@
                 </button>
 
                 <ul class="uri-list">
-                    <li ng-repeat="perfReport in dailyPerformanceReports | orderBy:'duration95':true | startFrom:dailyPerformanceReportsCurrentPage*dailyPerformanceReportsPageSize | limitTo:dailyPerformanceReportsPageSize" >
+                    <li ng-repeat="perfReport in dailyPerformanceReportList | orderBy:'duration95':true | startFrom:dailyPerformanceReportsCurrentPage*dailyPerformanceReportsPageSize | limitTo:dailyPerformanceReportsPageSize" >
                         <div class="header">{{perfReport.id}}</div>
                         <div class="value">{{perfReport.duration95}}ms</div>
                     </li>
